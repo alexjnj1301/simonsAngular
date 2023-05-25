@@ -1,7 +1,7 @@
 <body>
   <div class="container">
     <div class="buttonsDiv">
-      <button *ngFor="let button of buttonList" class="{{button.classColor}}"></button>
+      <button *ngFor="let button of buttonList" class="{{button.classColor}}" (click)="ClickOnButton(button.classColor)"></button>
     </div>
     <div>
       <button class="start">Start</button>

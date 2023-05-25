@@ -15,4 +15,11 @@ export class AppComponent {
     {id: 3, classColor: 'green'},
     {id: 4, classColor: 'yellow'}
   ];
+
+  clickColor: string[] = [];
+
+  ClickOnButton(classColor: string) {
+    this.clickColor.push(classColor);
+    console.log(this.clickColor);
+  }
 }
