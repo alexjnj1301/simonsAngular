@@ -1,10 +1,7 @@
 <body>
   <div class="container">
     <div class="buttonsDiv">
-      <button class="red"></button>
-      <button class="blue"></button>
-      <button class="green"></button>
-      <button class="yellow"></button>
+      <button *ngFor="let button of buttonList" class="{{button.classColor}}"></button>
     </div>
     <div>
       <button class="start">Start</button>
