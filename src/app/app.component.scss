@@ -1,0 +1,51 @@
+.red{
+  background-color: red;
+  border-radius: 50% 0px 0px 0px;
+}
+
+.blue{
+  background-color: blue;
+  border-radius: 0px 50% 0px 0px;
+}
+
+.green{
+  background-color: green;
+  border-radius: 0px 0px 0px 50%;
+}
+
+.yellow{
+  background-color: yellow;
+  border-radius: 0px 0px 50% 0px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.buttonsDiv {
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.start{
+  height: fit-content;
+  margin-top: 1rem;
+}
+
+button{
+  border: none;
+  border-radius: 8px;
+  height: 200px;
+  width: 200px;
+  margin: 0.5rem;
+}
+button:hover{
+  cursor: pointer;
+  scale: 1.05;
+  transition: 0.2s;
+}
