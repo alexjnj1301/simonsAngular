@@ -18,8 +18,29 @@ export class AppComponent {
 
   clickColor: string[] = [];
 
+  colorSequenceListIA: string[] = [];
+
   ClickOnButton(classColor: string) {
     this.clickColor.push(classColor);
     console.log(this.clickColor);
+  }
+
+  addOneSequence() {
+    let random = Math.floor(Math.random() * 4) + 1;
+    switch (random) {
+      case 1:
+        this.colorSequenceListIA.push('red');
+        break;
+      case 2:
+        this.colorSequenceListIA.push('blue');
+        break;
+      case 3:
+        this.colorSequenceListIA.push('green');
+        break;
+      case 4:
+        this.colorSequenceListIA.push('yellow');
+        break;
+    }
+    console.log(this.colorSequenceListIA);
   }
 }
