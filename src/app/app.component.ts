@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ButtonsDto } from '../interfaces/colorButtons';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,10 @@ import { ButtonsDto } from '../interfaces/colorButtons';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  constructor(){
+    this.start();
+  }
+
   title = 'simonsAngular';
   classRed = 'red';
   buttonList : ButtonsDto[] = [
@@ -21,18 +26,16 @@ export class AppComponent {
   colorSequenceListIA: string[] = [];
 
   ClickOnButton(classColor: string) {
-    console.log("cliqué sur " + classColor);
     this.clickColor.push(classColor);
     const index = this.clickColor.length - 1;
     const iaListSize = this.colorSequenceListIA.length;
     if (this.clickColor[index] !== this.colorSequenceListIA[index]) {
-      console.log('perdu');
+      alert('perdu à la manche n°' + this.colorSequenceListIA.length + ' !');
       this.clickColor = [];
       this.colorSequenceListIA = [];
       this.addOneSequence();
     } else {
       if (this.clickColor.length === this.colorSequenceListIA.length) {
-        console.log('gagné');
         if (iaListSize === index + 1) {
           this.addOneSequence();
           this.clickColor = [];
@@ -43,6 +46,8 @@ export class AppComponent {
 
   private addOneSequence() {
     let random = Math.floor(Math.random() * 4) + 1;
+    // let random = 1;
+
     switch (random) {
       case 1:
         this.colorSequenceListIA.push('red');
@@ -58,6 +63,29 @@ export class AppComponent {
         break;
     }
     console.log("Séquence : ", this.colorSequenceListIA);
+    // alert("mes couilles");
+    this.displayButtonsToClick();
+  }
+
+  private displayButtonsToClick() {
+    let i = 0;
+    const sequence = this.colorSequenceListIA;
+    const interval = setInterval(() => {
+      if (i < sequence.length) {
+        console.log(sequence[i]);
+        const color = sequence[i];
+
+        const element = document.getElementById(color);
+      if (element) {
+          console.log("Zhuhu")
+          element.classList.add('focused');
+          setTimeout(() => element.classList.remove('focused'), 500);
+        }
+        i++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 1000);
   }
 
   public start(){
