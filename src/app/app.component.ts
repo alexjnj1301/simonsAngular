@@ -21,8 +21,24 @@ export class AppComponent {
   colorSequenceListIA: string[] = [];
 
   ClickOnButton(classColor: string) {
+    console.log("cliqué sur " + classColor);
     this.clickColor.push(classColor);
-    console.log(this.clickColor);
+    const index = this.clickColor.length - 1;
+    const iaListSize = this.colorSequenceListIA.length;
+    if (this.clickColor[index] !== this.colorSequenceListIA[index]) {
+      console.log('perdu');
+      this.clickColor = [];
+      this.colorSequenceListIA = [];
+      this.addOneSequence();
+    } else {
+      if (this.clickColor.length === this.colorSequenceListIA.length) {
+        console.log('gagné');
+        if (iaListSize === index + 1) {
+          this.addOneSequence();
+          this.clickColor = [];
+        }
+      }
+    }
   }
 
   addOneSequence() {
@@ -41,6 +57,6 @@ export class AppComponent {
         this.colorSequenceListIA.push('yellow');
         break;
     }
-    console.log(this.colorSequenceListIA);
+    console.log("Séquence : ", this.colorSequenceListIA);
   }
 }
