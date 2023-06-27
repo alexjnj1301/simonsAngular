@@ -41,7 +41,7 @@ export class AppComponent {
     }
   }
 
-  addOneSequence() {
+  private addOneSequence() {
     let random = Math.floor(Math.random() * 4) + 1;
     switch (random) {
       case 1:
@@ -58,5 +58,10 @@ export class AppComponent {
         break;
     }
     console.log("Séquence : ", this.colorSequenceListIA);
+  }
+
+  public start(){
+    this.colorSequenceListIA = [];
+    this.addOneSequence();
   }
 }
